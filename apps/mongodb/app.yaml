@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mongodb
-  namespace: omada
+  namespace: argocd
 spec:
   project: default
   source:
@@ -11,7 +11,7 @@ spec:
     targetRevision: 14.4.5
     helm:
       valueFiles:
-        - https://your-git-repo-url/apps/mongodb/values.yaml
+        - https://github.com/slin86/argocd/apps/mongodb/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: omada

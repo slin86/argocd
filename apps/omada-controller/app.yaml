@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: omada-controller
-  namespace: omada
+  namespace: argocd
 spec:
   project: default
   source:
@@ -11,7 +11,7 @@ spec:
     targetRevision: 12.2.15
     helm:
       valueFiles:
-        - https://your-git-repo/omada-controller/helm-values.yaml
+        - https://github.com/slin86/omada-controller/helm-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: omada
