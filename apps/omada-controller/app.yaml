@@ -11,7 +11,7 @@ spec:
     targetRevision: 12.2.15
     helm:
       valueFiles:
-        - https://github.com/slin86/omada-controller/helm-values.yaml
+        - https://raw.githubusercontent.com/slin86/argocd/main/apps/omada-controller/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: omada
