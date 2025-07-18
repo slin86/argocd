@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.truecharts.org
-    chart: omada-controller
-    targetRevision: 12.2.15
+    repoURL: https://github.com/trueforge-org/truecharts
+    targetRevision: master
+    path: charts/stable/omada-controller
     helm:
       valueFiles:
         - https://raw.githubusercontent.com/slin86/argocd/main/apps/omada-controller/values.yaml
