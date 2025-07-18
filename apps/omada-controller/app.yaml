@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: omada-controller
+  namespace: omada
+spec:
+  project: default
+  source:
+    repoURL: https://charts.truecharts.org
+    chart: omada-controller
+    targetRevision: 12.2.15
+    helm:
+      valueFiles:
+        - https://your-git-repo/omada-controller/helm-values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: omada
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

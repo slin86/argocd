@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mongodb
+  namespace: omada
+spec:
+  project: default
+  source:
+    repoURL: 'https://charts.bitnami.com/bitnami'
+    chart: mongodb
+    targetRevision: 14.4.5
+    helm:
+      valueFiles:
+        - https://your-git-repo-url/apps/mongodb/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: omada
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true

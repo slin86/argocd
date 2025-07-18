@@ -1,0 +1,10 @@
+auth:
+  enabled: true
+  rootUser: omada
+  rootPassword: omada123
+
+replicaSet:
+  enabled: false  # Einfach für Einzelinstanz
+persistence:
+  enabled: true
+  size: 1Gi
