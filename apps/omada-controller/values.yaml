@@ -21,3 +21,12 @@ service:
         port: 8043
         nodePort: 32043
         protocol: https
+  omada-udp:
+    enabled: true
+    type: NodePort
+    ports:
+      omada-udp1:
+        enabled: true
+        protocol: udp
+        port: 29810
+        nodePort: 30981
