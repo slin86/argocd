@@ -16,3 +16,8 @@ workload:
 service:
   main:
     type: NodePort
+    ports:
+      main:
+        port: 8043
+        nodePort: 32043
+        protocol: https
