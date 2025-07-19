@@ -7,7 +7,6 @@ workload:
       containers:
         main:
           env:
-            TZ: Europe/Berlin
             OMADA_DB_HOST: mongodb.omada.svc.cluster.local
             OMADA_DB_PORT: "27017"
             OMADA_DB_USER: omada
