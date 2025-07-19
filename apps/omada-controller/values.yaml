@@ -1,24 +1,19 @@
 mongodb:
-  enabled: false  # weil wir MongoDB selbst installieren
-externalDatabase:
-  enabled: true
-  type: mongodb
-  host: mongodb.omada.svc.cluster.local
-  port: 27017
-  username: omada
-  password: omada123
-  database: omada
+  enabled: false
 
-controller:
-  image:
-    repository: mbentley/omada-controller
-    tag: latest
-
-persistence:
-  enabled: true
-  storageClass: standard
-  data:
-    size: 1Gi
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            TZ: Europe/Berlin
+            OMADA_DB_HOST: mongodb.omada.svc.cluster.local
+            OMADA_DB_PORT: "27017"
+            OMADA_DB_USER: omada
+            OMADA_DB_PASS: omada123
+            OMADA_DB_NAME: omada
 
 service:
-  type: NodePort
+  main:
+    type: NodePort
