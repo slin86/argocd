@@ -11,7 +11,7 @@ spec:
     path: helm/omada-controller
     helm:
       valueFiles:
-        - apps/omada-controller/values.yaml
+        - ../../apps/omada-controller/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: omada
