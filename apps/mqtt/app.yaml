@@ -6,13 +6,20 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/slin86/argocd'
-    targetRevision: HEAD
-    path: apps/mqtt/overlays/home
-    kustomize:
-      buildOptions: [ "--enable-helm" ]
+    repoURL: https://k8s-at-home.com/charts/
+    chart: mosquitto
+    targetRevision: 4.0.2
+    helm:
+      values: |
+        auth:
+          enabled: true
+          username: mqtt
+          password: mqtt
+        service:
+          type: ClusterIP
+          port: 1883
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
     namespace: mqtt
   syncPolicy:
     automated:

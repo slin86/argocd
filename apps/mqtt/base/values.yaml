@@ -1,9 +1,0 @@
-auth:
-  enabled: true
-  password: "mqtt"
-  username: "mqtt"
-
-service:
-  type: ClusterIP
-  port: 1883
-  annotations: {}
