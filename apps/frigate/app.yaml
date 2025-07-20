@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/slin86/argocd
     targetRevision: HEAD
-    path: overlays/home
+    path: apps/frigate/overlays/home
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: frigate
