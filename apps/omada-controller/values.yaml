@@ -7,6 +7,7 @@ workload:
       containers:
         main:
           env:
+            CONTROLLER_HOSTNAME: 192.168.178.24
             OMADA_DB_HOST: mongodb.omada.svc.cluster.local
             OMADA_DB_PORT: "27017"
             OMADA_DB_USER: omada
@@ -16,6 +17,8 @@ workload:
 service:
   main:
     type: NodePort
+    externalIPs:
+      - 192.168.178.24
     ports:
       main:
         port: 8043
