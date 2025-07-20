@@ -6,11 +6,57 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/slin86/argocd
-    targetRevision: HEAD
-    path: apps/frigate/overlays/home
+    repoURL: https://k8s-at-home.com/charts/
+    chart: frigate
+    targetRevision: 8.2.2
+    helm:
+      values: |
+        mqtt:
+          enabled: false
+
+        detectors:
+          cpu1:
+            type: cpu
+
+        frigate:
+          storage:
+            path: /media/frigate
+            tmpfs_cache: false
+
+        cameras:
+          garten:
+            ffmpeg:
+              inputs:
+                - path: rtsp://admin:asdf@192.168.178.90:554/h264Preview_01_main
+                  roles:
+                    - detect
+                    - record
+            detect:
+              width: 3840
+              height: 2160
+              fps: 5
+            objects:
+              track:
+                - person
+                - dog
+
+        record:
+          enabled: true
+          retain_days: 7
+          events:
+            retain:
+              default: 3
+
+        service:
+          type: NodePort
+          nodePort: 31600
+
+        persistence:
+          media:
+            enabled: true
+            existingClaim: frigate-media-pvc
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
     namespace: frigate
   syncPolicy:
     automated:
