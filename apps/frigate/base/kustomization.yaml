@@ -1,0 +1,10 @@
+resources:
+  - pvc.yaml
+
+helmCharts:
+  - name: frigate
+    repo: https://blakeblackshear.github.io/blakeshome-charts/
+    version: 8.1.0
+    releaseName: frigate
+    namespace: frigate
+    valuesFile: helm-values.yaml
