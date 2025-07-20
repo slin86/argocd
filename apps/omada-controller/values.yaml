@@ -7,6 +7,13 @@ workload:
       hostNetwork: true  # ← Richtig hier!
       containers:
         main:
+          resources:
+            requests:
+              memory: 1024Mi
+              cpu: 250m
+            limits:
+              memory: 3072Mi
+              cpu: 1000m
           env:
             CONTROLLER_HOSTNAME: 192.168.178.24
             OMADA_DB_HOST: mongodb.omada.svc.cluster.local
