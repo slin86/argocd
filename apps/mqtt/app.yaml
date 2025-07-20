@@ -11,13 +11,19 @@ spec:
     targetRevision: 4.8.2
     helm:
       values: |
-        auth:
-          enabled: true
-          username: mqtt
-          password: mqtt
+        image:
+          repository: eclipse-mosquitto
+          tag: 2.0.14
         service:
-          type: ClusterIP
-          port: 1883
+          main:
+            enabled: true
+            ports:
+              mqtt:
+                enabled: true
+                port: 1883
+        persistence:
+          data:
+            enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: mqtt
