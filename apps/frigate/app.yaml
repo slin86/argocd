@@ -48,8 +48,13 @@ spec:
               default: 3
 
         service:
-          type: NodePort
-          nodePort: 31600
+          main:
+            enabled: true
+            type: NodePort
+            ports:
+              http:
+                enabled: true
+                port: 31600
 
         persistence:
           media:
