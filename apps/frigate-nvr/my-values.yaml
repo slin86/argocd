@@ -16,7 +16,8 @@ config: |
     default: debug
   record:
     enabled: true
-    retain_days: 7
+    retain:
+      days: 7
     events:
       retain:
         default: 3
@@ -36,13 +37,6 @@ config: |
        track:
          - person
          - dog
-
-record:
-  enabled: true
-  retain_days: 7
-  events:
-    retain:
-      days: 3
 
 persistence:
   config:
