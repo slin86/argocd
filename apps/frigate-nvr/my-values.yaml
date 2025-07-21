@@ -1,55 +1,56 @@
-config: |
-  mqtt:
-    host: mqtt-mosquitto.mqtt.svc.cluster.local
-    port: 1883
-    topic_prefix: frigate
-    client_id: frigate
-  detectors:
-    cpu1:
-      type: cpu
-  logger:
-    default: info
-  record:
-    enabled: true
-    retain:
-      days: 7
-    events:
+frigate:
+  config: |
+    mqtt:
+      host: mqtt-mosquitto.mqtt.svc.cluster.local
+      port: 1883
+      topic_prefix: frigate
+      client_id: frigate
+    detectors:
+      cpu1:
+        type: cpu
+    logger:
+      default: info
+    record:
+      enabled: true
       retain:
-        default: 3
-  cameras:
-    garten:
-      ffmpeg:
-       inputs:
-         - path: 'rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main'
-           roles:
-             - detect
-             - record
-      detect:
-        width: 3840
-        height: 2160
-        fps: 5
-      objects:
-       track:
-         - person
-         - dog
+        days: 7
+      events:
+        retain:
+          default: 3
+    cameras:
+      garten:
+        ffmpeg:
+         inputs:
+           - path: 'rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main'
+             roles:
+               - detect
+               - record
+        detect:
+          width: 3840
+          height: 2160
+          fps: 5
+        objects:
+         track:
+           - person
+           - dog
 
-persistence:
-  config:
-    enabled: true
-    size: 1Gi
-  media:
-    enabled: true
-    size: 1536Gi
-    accessMode: ReadWriteOnce
+  persistence:
+    config:
+      enabled: true
+      size: 1Gi
+    media:
+      enabled: true
+      size: 1536Gi
+      accessMode: ReadWriteOnce
 
-  cache:
-    enabled: true
-    type: emptyDir
-    medium: Memory
-    sizeLimit: 1Gi
-    mountPath: /dev/shm
+    cache:
+      enabled: true
+      type: emptyDir
+      medium: Memory
+      sizeLimit: 1Gi
+      mountPath: /dev/shm
 
-service:
-  type: NodePort
-  port: 5000
-  nodePort: 31600
+  service:
+    type: NodePort
+    port: 5000
+    nodePort: 31600
