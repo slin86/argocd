@@ -1,6 +1,8 @@
 env:
-  TZ: Europe/Berlin
-  FRIGATE_LOG_LEVEL: debug
+  - name: FRIGATE_LOG_LEVEL
+    value: debug
+  - name: LOGGER_DEFAULT
+    value: trace
 
 config: |
   mqtt:
