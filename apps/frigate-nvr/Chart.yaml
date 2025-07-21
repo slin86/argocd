@@ -1,0 +1,9 @@
+apiVersion: v2
+name: frigate-nvr
+description: Frigate NVR Helm Chart Wrapper for Local ArgoCD Deployment
+type: application
+version: 0.1.0
+dependencies:
+  - name: frigate
+    version: 7.8.0
+    repository: "file://charts/frigate"
