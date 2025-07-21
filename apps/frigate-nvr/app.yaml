@@ -10,58 +10,8 @@ spec:
     targetRevision: HEAD
     path: charts/frigate
     helm:
-      values: |
-        frigate:
-          detectors:
-            cpu1:
-              type: cpu
-          logger:
-            default: debug
-        
-          mqtt:
-            host: mqtt-mosquitto.mqtt.svc.cluster.local
-            port: 1883
-            topic_prefix: frigate
-            client_id: frigate
-
-          cameras:
-            garten:
-              ffmpeg:
-                inputs:
-                  - path: rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main
-                    roles:
-                      - detect
-                      - record
-              detect:
-                width: 3840
-                height: 2160
-                fps: 5
-              objects:
-                track:
-                  - person
-                  - dog
-
-          record:
-            enabled: true
-            events:
-              retain:
-                days: 3
-
-        persistence:
-          config:
-            enabled: true
-            size: 1Gi
-          media:
-            enabled: true
-            size: 1536Gi
-            accessMode: ReadWriteOnce
-
-        service:
-          main:
-            type: NodePort
-            ports:
-              http:
-                port: 5000
+      valuesFiles:
+        - my-values.yaml
 
   destination:
     server: https://kubernetes.default.svc
