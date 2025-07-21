@@ -1,26 +1,8 @@
-mqtt:
-  enabled: false
 #  host: mqtt-mosquitto.mqtt.svc.cluster.local
 #  port: 1883
 #  topic_prefix: frigate
 #  client_id: frigate
 
-detectors:
-  cpu1:
-    type: cpu
-
-frigate:
-  storage:
-    path: /media/frigate
-    tmpfs_cache: false
-
-env:
-  FRIGATE_LOG_LEVEL: debug
-
-logger:
-  default: trace
-
-cameras: {}
 #cameras:
 #  garten:
 #    ffmpeg:
@@ -38,12 +20,55 @@ cameras: {}
 #        - person
 #        - dog
 
-record:
-  enabled: true
-  retain_days: 7
-  events:
-    retain:
-      default: 3
+#image:
+#  repository: blakeblackshear/frigate
+#  tag: 0.10.0
+#  pullPolicy: IfNotPresent
+
+env:
+  TZ: Europe/Berlin
+  FRIGATE_LOG_LEVEL: debug
+
+configmap:
+  config:
+    enabled: true
+    data:
+      config.yml: |
+        mqtt:
+          enabled: false
+
+        detectors:
+          cpu1:
+            type: cpu
+
+        storage:
+          path: /media/frigate
+          tmpfs_cache: false
+
+        record:
+          enabled: true
+          retain_days: 7
+          events:
+            retain:
+              default: 3
+
+        cameras: {}
+        # cameras:
+        #   garten:
+        #     ffmpeg:
+        #       inputs:
+        #         - path: 'rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main'
+        #           roles:
+        #             - detect
+        #             - record
+        #     detect:
+        #       width: 3840
+        #       height: 2160
+        #       fps: 5
+        #     objects:
+        #       track:
+        #         - person
+        #         - dog
 
 service:
   main:
@@ -58,3 +83,9 @@ persistence:
   media:
     enabled: true
     existingClaim: frigate-media-pvc
+  cache:
+    enabled: true
+    type: emptyDir
+    medium: Memory
+    sizeLimit: 1Gi
+    mountPath: /dev/shm
