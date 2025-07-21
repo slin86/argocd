@@ -83,30 +83,33 @@ frigate:
   logger:
     default: trace
 
-#  config: |
-#    mqtt:
-#      enabled: true
-#      host: mqtt-mosquitto.mqtt.svc.cluster.local
-#      port: 1883
-#      topic_prefix: frigate
-#      client_id: frigate
-#
-#    cameras:
-#     garten:
-#       ffmpeg:
-#         inputs:
-#           - path: 'rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main'
-#             roles:
-#               - detect
-#               - record
-#       detect:
-#         width: 3840
-#         height: 2160
-#         fps: 5
-#       objects:
-#         track:
-#           - person
-#           - dog
+  configmap:
+    config:
+      enabled: true
+      data:
+        config.yml: |
+          mqtt:
+            enabled: true
+            host: mqtt-mosquitto.mqtt.svc.cluster.local
+            port: 1883
+            topic_prefix: frigate
+            client_id: frigate
+          cameras:
+           garten:
+             ffmpeg:
+               inputs:
+                 - path: 'rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main'
+                   roles:
+                     - detect
+                     - record
+             detect:
+               width: 3840
+               height: 2160
+               fps: 5
+             objects:
+               track:
+                 - person
+                 - dog
 
   record:
     enabled: true

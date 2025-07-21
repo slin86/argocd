@@ -101,29 +101,29 @@ resources: {}
 logger:
   default: trace
 
-configmap:
-  config:
-    # -- Store frigate configuration as a ConfigMap
-    enabled: true
+#configmap:
+#  config:
+#    # -- Store frigate configuration as a ConfigMap
+#    enabled: true
 
     # -- See [docs](https://blakeblackshear.github.io/frigate/) for more details.
     # @default -- see URL to default config
-    data:
-      config.yml: |
-        mqtt:
-          host: mqtt-mosquitto.mqtt.svc.cluster.local
-        cameras:
-          back:
-            ffmpeg:
-              inputs:
-                - path: rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main
-                  roles:
-                    - detect
-                    - rtmp
-            detect:
-              width: 3840
-              height: 2160
-            objects:
-              track:
-                - person
-                - dog
+#    data:
+#      config.yml: |
+#        mqtt:
+#          host: mqtt-mosquitto.mqtt.svc.cluster.local
+#        cameras:
+#          back:
+#            ffmpeg:
+#              inputs:
+#                - path: rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main
+#                  roles:
+#                    - detect
+#                    - rtmp
+#            detect:
+#              width: 3840
+#              height: 2160
+#            objects:
+#              track:
+#                - person
+#                - dog
