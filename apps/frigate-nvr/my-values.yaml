@@ -53,4 +53,4 @@ frigate:
   service:
     type: NodePort
     port: 5000
-    nodePort: 31700
+    nodePort: null
