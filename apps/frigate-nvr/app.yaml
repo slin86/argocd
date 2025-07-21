@@ -7,8 +7,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/blakeblackshear/blakeshome-charts
-    targetRevision: HEAD
-    path: charts/frigate
+    targetRevision: 7.8.0
+    chart: frigate
     helm:
       valuesFiles:
         - https://raw.githubusercontent.com/slin86/argocd/refs/heads/main/apps/frigate-nvr/my-values.yaml
