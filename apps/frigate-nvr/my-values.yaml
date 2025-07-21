@@ -1,8 +1,3 @@
-env:
-  FRIGATE_LOG_LEVEL: debug
-  LOGGER_DEFAULT: trace
-  FOO_BAR: Kartoffel
-
 config: |
   mqtt:
     host: mqtt-mosquitto.mqtt.svc.cluster.local
@@ -13,7 +8,7 @@ config: |
     cpu1:
       type: cpu
   logger:
-    default: debug
+    default: info
   record:
     enabled: true
     retain:
