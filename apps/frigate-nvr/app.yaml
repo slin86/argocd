@@ -6,12 +6,16 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://blakeblackshear.github.io/blakeshome-charts/
-    chart: frigate
-    targetRevision: 7.8.0
+    repoURL: https://github.com/slin86/argocd
+    targetRevision: main
+    path: apps/frigate-nvr
+#    path: apps/frigate-nvr/charts/frigate
+#    repoURL: https://blakeblackshear.github.io/blakeshome-charts/
+#    chart: frigate
+#    targetRevision: 7.8.0
     helm:
       valueFiles:
-        - https://raw.githubusercontent.com/slin86/argocd/refs/heads/main/apps/frigate-nvr/my-values.yaml
+        - my-values.yaml
 
   destination:
     server: https://kubernetes.default.svc

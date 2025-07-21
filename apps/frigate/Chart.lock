@@ -1,6 +1,0 @@
-dependencies:
-- name: frigate
-  repository: https://k8s-at-home.com/charts/
-  version: 8.2.2
-digest: sha256:f400d3960681aada6400ca4727a7c3114bccb40abde6f33fd149f1451da60013
-generated: "2025-07-21T11:29:25.206393+02:00"
