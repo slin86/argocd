@@ -7,10 +7,10 @@ spec:
   project: default
   source:
     repoURL: https://github.com/blakeblackshear/blakeshome-charts
-    targetRevision: 7.8.0
     chart: frigate
+    targetRevision: 7.8.0
     helm:
-      valuesFiles:
+      valueFiles:
         - https://raw.githubusercontent.com/slin86/argocd/refs/heads/main/apps/frigate-nvr/my-values.yaml
 
   destination:
@@ -18,7 +18,7 @@ spec:
     namespace: frigate-nvr
   syncPolicy:
     automated:
-      prune: true
       selfHeal: true
+      prune: true
     syncOptions:
       - CreateNamespace=true
