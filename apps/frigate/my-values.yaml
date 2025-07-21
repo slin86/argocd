@@ -20,9 +20,6 @@ frigate:
           detectors:
             cpu1:
               type: cpu
-          storage:
-            path: /media/frigate
-            tmpfs_cache: false
           logger:
             default: debug
           record:
