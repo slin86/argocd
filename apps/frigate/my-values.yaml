@@ -1,24 +1,104 @@
-env:
-  - name: FRIGATE_LOG_LEVEL
-    value: debug
-  - name: LOGGER_DEFAULT
-    value: trace
-
-config: |
+#frigate:
+#  env:
+#    - FRIGATE_LOG_LEVEL: debug
+#    - LOGGER_DEFAULT: trace
+#    - FOO_BAR: Kartoffel
+#
+#  config: |
+#    mqtt:
+#      enabled: true
+#      host: mqtt-mosquitto.mqtt.svc.cluster.local
+#      port: 1883
+#      topic_prefix: frigate
+#      client_id: frigate
+#
+#    detectors:
+#      cpu1:
+#        type: cpu
+#
+#    storage:
+#      path: /media/frigate
+#      tmpfs_cache: false
+#
+#    record:
+#      enabled: true
+#      retain_days: 7
+#      events:
+#        retain:
+#          default: 3
+#
+#    cameras:
+#     garten:
+#       ffmpeg:
+#         inputs:
+#           - path: 'rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main'
+#             roles:
+#               - detect
+#               - record
+#       detect:
+#         width: 3840
+#         height: 2160
+#         fps: 5
+#       objects:
+#         track:
+#           - person
+#           - dog
+#
+#  service:
+#    main:
+#      enabled: true
+#      type: NodePort
+#      ports:
+#        http:
+#          enabled: true
+#          port: 31600
+#
+#  persistence:
+#    media:
+#      enabled: true
+#      existingClaim: frigate-media-pvc
+#    cache:
+#      enabled: true
+#      type: emptyDir
+#      medium: Memory
+#      sizeLimit: 1Gi
+#      mountPath: /dev/shm
+frigate:
   mqtt:
-    enabled: true
-    host: mqtt-mosquitto.mqtt.svc.cluster.local
-    port: 1883
-    topic_prefix: frigate
-    client_id: frigate
+    enabled: false
 
   detectors:
     cpu1:
       type: cpu
 
-  storage:
-    path: /media/frigate
-    tmpfs_cache: false
+  frigate:
+    storage:
+      path: /media/frigate
+      tmpfs_cache: false
+
+  env:
+    FRIGATE_LOG_LEVEL: debug
+
+  logger:
+    default: trace
+
+  cameras: {}
+  #cameras:
+  #  garten:
+  #    ffmpeg:
+  #      inputs:
+  #        - path: 'rtsp://admin:PASSWORT@192.168.178.90:554/h264Preview_01_main'
+  #          roles:
+  #            - detect
+  #            - record
+  #    detect:
+  #      width: 3840
+  #      height: 2160
+  #      fps: 5
+  #    objects:
+  #      track:
+  #        - person
+  #        - dog
 
   record:
     enabled: true
@@ -27,39 +107,23 @@ config: |
       retain:
         default: 3
 
-  cameras:
-   garten:
-     ffmpeg:
-       inputs:
-         - path: 'rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main'
-           roles:
-             - detect
-             - record
-     detect:
-       width: 3840
-       height: 2160
-       fps: 5
-     objects:
-       track:
-         - person
-         - dog
+  service:
+    main:
+      enabled: true
+      type: NodePort
+      ports:
+        http:
+          enabled: true
+          port: 31600
 
-service:
-  main:
-    enabled: true
-    type: NodePort
-    ports:
-      http:
-        enabled: true
-        port: 31600
+  persistence:
+    media:
+      enabled: true
+      existingClaim: frigate-media-pvc
 
-persistence:
-  media:
-    enabled: true
-    existingClaim: frigate-media-pvc
-  cache:
-    enabled: true
-    type: emptyDir
-    medium: Memory
-    sizeLimit: 1Gi
-    mountPath: /dev/shm
+    cache:
+      enabled: true
+      type: emptyDir
+      medium: Memory
+      sizeLimit: 1Gi
+      mountPath: /dev/shm
