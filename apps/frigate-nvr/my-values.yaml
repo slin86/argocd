@@ -50,10 +50,6 @@ persistence:
     mountPath: /dev/shm
 
 service:
-  main:
-    enabled: true
-    type: NodePort
-    ports:
-      http:
-        enabled: true
-        port: 31600
+  type: NodePort
+  port: 5000
+  nodePort: 31600
