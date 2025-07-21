@@ -11,7 +11,7 @@ spec:
     path: charts/frigate
     helm:
       valuesFiles:
-        - my-values.yaml
+        - https://raw.githubusercontent.com/slin86/argocd/refs/heads/main/apps/frigate-nvr/my-values.yaml
 
   destination:
     server: https://kubernetes.default.svc
