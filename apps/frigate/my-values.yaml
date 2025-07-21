@@ -78,6 +78,8 @@ frigate:
 
   env:
     FRIGATE_LOG_LEVEL: debug
+    LOGGER_DEFAULT: trace
+    FOO_BAR: Kartoffel
 
   logger:
     default: trace
