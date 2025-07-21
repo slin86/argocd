@@ -9,8 +9,6 @@ spec:
     repoURL: https://github.com/slin86/argocd
     targetRevision: HEAD
     path: apps/frigate
-    directory:
-      recurse: true
     helm:
       valueFiles:
         - values.yaml

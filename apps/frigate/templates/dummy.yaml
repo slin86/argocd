@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: frigate-chart-placeholder
-  namespace: frigate
-data:
-  note: "This file ensures Helm chart is valid"
