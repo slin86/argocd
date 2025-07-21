@@ -22,6 +22,8 @@ env:
   # -- Set a RTSP password
   # @default -- empty
   FRIGATE_RTSP_PASSWORD: ""
+  FRIGATE_LOG_LEVEL: debug
+  LOGGER_DEFAULT: trace
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
