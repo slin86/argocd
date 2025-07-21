@@ -14,6 +14,9 @@ frigate:
     path: /media/frigate
     tmpfs_cache: false
 
+logger:
+  default: debug
+
 #cameras:
 #  garten:
 #    ffmpeg:
