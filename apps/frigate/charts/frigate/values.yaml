@@ -108,15 +108,19 @@ configmap:
     data:
       config.yml: |
         mqtt:
-          host: mqtt.server.com
+          host: mqtt-mosquitto.mqtt.svc.cluster.local
         cameras:
           back:
             ffmpeg:
               inputs:
-                - path: rtsp://demo:demo@ipvmdemo.dyndns.org:5541/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast
+                - path: rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main
                   roles:
                     - detect
                     - rtmp
             detect:
-              width: 1280
-              height: 720
+              width: 3840
+              height: 2160
+            objects:
+              track:
+                - person
+                - dog
