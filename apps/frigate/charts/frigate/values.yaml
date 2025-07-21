@@ -98,6 +98,9 @@ resources: {}
   #   gpu.intel.com/i915: 1
   #   memory: 4096Mi
 
+logger:
+  default: trace
+
 configmap:
   config:
     # -- Store frigate configuration as a ConfigMap
