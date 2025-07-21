@@ -94,22 +94,40 @@ frigate:
             port: 1883
             topic_prefix: frigate
             client_id: frigate
+          detectors:
+          cpu1:
+            type: cpu
+          frigate:
+            storage:
+              path: /media/frigate
+              tmpfs_cache: false
+          env_vars:
+            FRIGATE_LOG_LEVEL: debug
+          logger:
+            default: trace
+          record:
+            enabled: true
+            retain_days: 7
+            events:
+              retain:
+                default: 3
           cameras:
-           garten:
-             ffmpeg:
+            garten:
+              ffmpeg:
                inputs:
                  - path: 'rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main'
                    roles:
                      - detect
                      - record
-             detect:
-               width: 3840
-               height: 2160
-               fps: 5
-             objects:
+              detect:
+                width: 3840
+                height: 2160
+                fps: 5
+              objects:
                track:
                  - person
                  - dog
+          
 
   record:
     enabled: true
