@@ -81,7 +81,7 @@ helm upgrade --install \
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Set Pod affinity rules |
-| config | string | Omitted for brevity. See [values.yaml](./values.yaml). | frigate configuration - see [Docs](https://docs.frigate.video/configuration/index) for more info |
+| config | string | Omitted for brevity. See [values.yaml](values.yaml). | frigate configuration - see [Docs](https://docs.frigate.video/configuration/index) for more info |
 | coral.enabled | bool | `false` | enables the use of a Coral device |
 | coral.hostPath | string | `"/dev/bus/usb"` | path on the host to which to mount the Coral device |
 | env | object | `{}` | additional ENV variables to set. Prefix with FRIGATE_ to target Frigate configuration values |

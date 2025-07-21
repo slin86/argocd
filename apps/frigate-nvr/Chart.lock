@@ -1,0 +1,6 @@
+dependencies:
+- name: frigate
+  repository: file://charts/frigate
+  version: 7.8.0
+digest: sha256:ab477e46480a5244031b4ab54202ed6612b8ba7e537a7927c068f5bb0659eb20
+generated: "2025-07-22T00:41:10.00461+02:00"
