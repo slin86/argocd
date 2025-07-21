@@ -12,9 +12,6 @@ spec:
     directory:
       recurse: true
     helm:
-      chart: frigate
-      repo: https://k8s-at-home.com/charts/
-      version: 8.2.2
       valueFiles:
         - values.yaml
   destination:
