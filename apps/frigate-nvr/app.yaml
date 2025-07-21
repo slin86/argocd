@@ -15,7 +15,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: frigate_nvr
+    namespace: home-security
   syncPolicy:
     automated:
       selfHeal: true
