@@ -15,7 +15,7 @@ frigate:
     tmpfs_cache: false
 
 logger:
-  default: debug
+  default: trace
 
 #cameras:
 #  garten:
