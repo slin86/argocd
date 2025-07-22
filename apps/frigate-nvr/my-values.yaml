@@ -34,7 +34,6 @@ frigate:
         objects:
          track:
            - person
-           - dog
 
   persistence:
     config:
