@@ -1,5 +1,7 @@
 frigate:
   config: |
+    auth:
+      enabled: false
     mqtt:
       host: mqtt-mosquitto.mqtt.svc.cluster.local
       port: 1883
