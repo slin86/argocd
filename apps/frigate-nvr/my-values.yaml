@@ -22,6 +22,13 @@ frigate:
     cameras:
       garten:
         ffmpeg:
+          hwaccel_args:
+            - "-hwaccel"
+            - "vaapi"
+            - "-hwaccel_device"
+            - "/dev/dri/renderD128"
+            - "-hwaccel_output_format"
+            - "yuv420p"
           inputs:
             - path: rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main
               roles:
@@ -51,8 +58,14 @@ frigate:
             required_zones:
               - Rasen
               - Terrasse
-    version: 0.14
 
+  extraVolumes:
+    - name: video-dev
+      hostPath:
+        path: /dev/dri
+  extraVolumeMounts:
+    - name: video-dev
+      mountPath: /dev/dri
 
   persistence:
     config:
