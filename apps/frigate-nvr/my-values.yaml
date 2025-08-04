@@ -59,15 +59,15 @@ frigate:
             required_zones:
               - Rasen
               - Terrasse
-
-  extraVolumes:
-    - name: openvino-model
-      hostPath:
-        path: /opt/frigate-models
-
-  extraVolumeMounts:
-    - name: openvino-model
-      mountPath: /openvino-model
+#
+#  extraVolumes:
+#    - name: openvino-model
+#      hostPath:
+#        path: /opt/frigate-models
+#
+#  extraVolumeMounts:
+#    - name: openvino-model
+#      mountPath: /openvino-model
 
   persistence:
     config:
