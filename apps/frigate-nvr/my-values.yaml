@@ -12,7 +12,7 @@ frigate:
         type: openvino
         device: CPU
         model:
-          path: /openvino-model/person-detection-retail-0013.xml
+          path: /openvino-model/person-detection-retail-0002.xml
     logger:
       default: info
     record:
