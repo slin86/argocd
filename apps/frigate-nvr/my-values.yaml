@@ -27,7 +27,13 @@ frigate:
     cameras:
       garten:
         ffmpeg:
-          hwaccel_args: [] # VAAPI deaktiviert
+          hwaccel_args: 
+            - -hwaccel
+            - vaapi
+            - -hwaccel_device
+            - /dev/dri/renderD128
+            - -hwaccel_output_format
+            - yuv420p
           inputs:
             - path: rtsp://admin:N3C-iAJf8g_ZaQZwEEY@@192.168.178.90:554/h264Preview_01_main
               roles:
