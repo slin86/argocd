@@ -10,7 +10,7 @@ frigate:
     detectors:
       openvino1:
         type: openvino
-        device: AUTO
+        device: GPU
     model:
       width: 300
       height: 300
