@@ -60,6 +60,9 @@ frigate:
               - Rasen
               - Terrasse
 
+  securityContext:
+    privileged: true
+
   extraVolumes:
     - name: video-dev
       hostPath:
