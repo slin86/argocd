@@ -17,10 +17,6 @@ frigate:
       input_tensor: nhwc
       input_pixel_format: bgr
       path: /openvino-model/ssdlite_mobilenet_v2.xml
-    logger:
-      default: info
-      logs:
-        frigate.detectors.plugins.openvino: debug
     record:
       enabled: true
       retain:
@@ -61,6 +57,11 @@ frigate:
             required_zones:
               - Rasen
               - Terrasse
+
+  logger:
+    default: info
+    logs:
+      frigate.detectors.plugins.openvino: debug
 
   securityContext:
     privileged: true
