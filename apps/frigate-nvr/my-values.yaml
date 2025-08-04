@@ -10,7 +10,7 @@ frigate:
     detectors:
       openvino1:
         type: openvino
-        device: CPU
+        device: AUTO
     model:
       width: 300
       height: 300
@@ -59,15 +59,15 @@ frigate:
             required_zones:
               - Rasen
               - Terrasse
-#
-#  extraVolumes:
-#    - name: openvino-model
-#      hostPath:
-#        path: /opt/frigate-models
-#
-#  extraVolumeMounts:
-#    - name: openvino-model
-#      mountPath: /openvino-model
+
+  extraVolumes:
+    - name: video-dev
+      hostPath:
+        path: /dev/dri
+
+  extraVolumeMounts:
+    - name: video-dev
+      mountPath: /dev/dri
 
   persistence:
     config:
