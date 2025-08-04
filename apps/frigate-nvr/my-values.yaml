@@ -10,7 +10,9 @@ frigate:
     detectors:
       openvino1:
         type: openvino
-        device: AUTO  # oder GPU, CPU – dazu gleich mehr
+        device: GPU
+        model:
+          path: /openvino-model/person-detection-retail-0013.xml
     logger:
       default: info
     record:
@@ -54,13 +56,14 @@ frigate:
               - Rasen
               - Terrasse
 
-#  extraVolumes:
-#    - name: video-dev
-#      hostPath:
-#        path: /dev/dri
-#  extraVolumeMounts:
-#    - name: video-dev
-#      mountPath: /dev/dri
+  extraVolumes:
+    - name: openvino-model
+      hostPath:
+        path: /opt/frigate-models
+
+  extraVolumeMounts:
+    - name: openvino-model
+      mountPath: /openvino-model
 
   persistence:
     config:
