@@ -19,6 +19,8 @@ frigate:
       path: /openvino-model/ssdlite_mobilenet_v2.xml
     logger:
       default: info
+    logs:
+      frigate.detectors.plugins.openvino: debug
     record:
       enabled: true
       retain:
