@@ -62,6 +62,7 @@ frigate:
     default: info
     logs:
       frigate.detectors.plugins.openvino: debug
+      frigate.detectors.openvino: debug
 
   securityContext:
     privileged: true
