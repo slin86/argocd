@@ -54,13 +54,13 @@ frigate:
               - Rasen
               - Terrasse
 
-  extraVolumes:
-    - name: video-dev
-      hostPath:
-        path: /dev/dri
-  extraVolumeMounts:
-    - name: video-dev
-      mountPath: /dev/dri
+#  extraVolumes:
+#    - name: video-dev
+#      hostPath:
+#        path: /dev/dri
+#  extraVolumeMounts:
+#    - name: video-dev
+#      mountPath: /dev/dri
 
   persistence:
     config:
