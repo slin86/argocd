@@ -12,7 +12,8 @@ frigate:
         type: openvino
         device: GPU
         model:
-          path: /openvino-model/ssdlite_mobilenet_v2.xml
+          path: /openvino-model/ssd_mobilenet_v2_coco.xml
+    #          path: /openvino-model/ssdlite_mobilenet_v2.xml
     
     record:
       enabled: true
@@ -37,8 +38,8 @@ frigate:
                 - detect
                 - record
         detect:
-          width: 300
-          height: 300
+          width: 320
+          height: 320
           fps: 3
         objects:
           track:
