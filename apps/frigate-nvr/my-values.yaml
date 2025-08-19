@@ -13,10 +13,6 @@ frigate:
         device: GPU
         model:
           path: /openvino-model/ssdlite_mobilenet_v2.xml
-          width: 320
-          height: 320
-          input_tensor: nhwc
-          input_pixel_format: bgr
     
     record:
       enabled: true
