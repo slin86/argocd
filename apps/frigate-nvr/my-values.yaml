@@ -11,12 +11,13 @@ frigate:
       openvino1:
         type: openvino
         device: GPU
-    model:
-      width: 300
-      height: 300
-      input_tensor: nhwc
-      input_pixel_format: bgr
-      path: /openvino-model/ssdlite_mobilenet_v2.xml
+        model:
+          path: /openvino-model/ssdlite_mobilenet_v2.xml
+          width: 300
+          height: 300
+          input_tensor: nhwc
+          input_pixel_format: bgr
+    
     record:
       enabled: true
       retain:
@@ -40,9 +41,9 @@ frigate:
                 - detect
                 - record
         detect:
-          width: 3840
-          height: 2160
-          fps: 3
+          width: 300
+          height: 300
+          fps: 5
         objects:
           track:
             - person
