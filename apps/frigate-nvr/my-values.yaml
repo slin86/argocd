@@ -37,9 +37,9 @@ frigate:
                 - detect
                 - record
         detect:
-          width: 320
-          height: 320
-          fps: 5
+          width: 300
+          height: 300
+          fps: 3
         objects:
           track:
             - person
