@@ -17,12 +17,10 @@ spec:
         service:
           main:
             enabled: true
-            type: NodePort
             ports:
               mqtt:
                 enabled: true
                 port: 1883
-                nodePort: 31883
           persistence:
             data:
               enabled: false
