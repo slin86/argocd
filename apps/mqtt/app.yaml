@@ -21,7 +21,8 @@ spec:
             ports:
               mqtt:
                 enabled: true
-                port: 1884
+                port: 1883
+                nodePort: 31883
           persistence:
             data:
               enabled: false
