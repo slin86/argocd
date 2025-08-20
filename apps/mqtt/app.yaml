@@ -17,6 +17,7 @@ spec:
         service:
           main:
             enabled: true
+            type: NodePort
             ports:
               mqtt:
                 enabled: true
