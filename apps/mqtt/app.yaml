@@ -17,13 +17,12 @@ spec:
         service:
           main:
             enabled: true
+            type: NodePort
             ports:
               mqtt:
                 enabled: true
                 port: 1883
-        persistence:
-          data:
-            enabled: false
+                nodePort: 31883
   destination:
     server: https://kubernetes.default.svc
     namespace: mqtt
