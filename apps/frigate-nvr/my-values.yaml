@@ -49,6 +49,17 @@ frigate:
         objects:
           track:
             - person
+        zones:
+          Bikes:
+            coordinates: 
+              0.987,0.719,0.993,0.373,0.831,0.396,0.835,0.548,0.629,0.571,0.61,0.774,0.879,0.935
+            loitering_time: 5
+            objects: person
+            inertia: 3
+          Entrance:
+            coordinates: 0.4,0.812,0.602,0.77,0.98,0.993,0.449,0.991
+            loitering_time: 3
+            objects: person
       garten:
         ffmpeg:
           hwaccel_args: preset-vaapi
