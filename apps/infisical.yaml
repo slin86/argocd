@@ -23,12 +23,14 @@ spec:
           enabled: false
         redis:
           enabled: false
+        ingress-nginx:
+          enabled: false
         ingress:
           enabled: true
           ingressClassName: traefik
           hostName: secrets.home.lan
           nginx:
-            enabled: false    
+            enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: infisical
