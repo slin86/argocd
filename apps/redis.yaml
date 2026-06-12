@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/slin86/argocd
     targetRevision: main
-    path: apps/redis
+    path: infra/redis
   destination:
     server: https://kubernetes.default.svc
     namespace: redis

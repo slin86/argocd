@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/slin86/argocd
     targetRevision: main
-    path: apps/nextcloud
+    path: infra/nextcloud
   destination:
     server: https://kubernetes.default.svc
     namespace: nextcloud
