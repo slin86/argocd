@@ -3,9 +3,8 @@ kind: Ingress
 metadata:
   name: nextcloud
   namespace: nextcloud
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "10g"   # große Uploads erlauben
 spec:
+  ingressClassName: traefik
   rules:
     - host: nextcloud.home.lan
       http:

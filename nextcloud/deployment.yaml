@@ -6,7 +6,7 @@ metadata:
 spec:
   replicas: 1
   strategy:
-    type: Recreate          # wichtig bei RWX/NFS + SQLite-freien Single-Instanz-Setups
+    type: Recreate
   selector:
     matchLabels:
       app: nextcloud
@@ -23,30 +23,39 @@ spec:
           env:
             - name: NEXTCLOUD_ADMIN_USER
               valueFrom:
-                secretKeyRef: {name: nextcloud-admin, key: username}
+                secretKeyRef:
+                  name: nextcloud-admin
+                  key: username
             - name: NEXTCLOUD_ADMIN_PASSWORD
               valueFrom:
-                secretKeyRef: {name: nextcloud-admin, key: password}
+                secretKeyRef:
+                  name: nextcloud-admin
+                  key: password
             - name: NEXTCLOUD_TRUSTED_DOMAINS
-              value: "nextcloud.home.lan 192.168.178.24"
-            # --- PostgreSQL: Anwesenheit von POSTGRES_HOST schaltet
-            #     die Erstinstallation von SQLite auf Postgres um ---
+              value: "nextcloud.home.lan"
+            # --- PostgreSQL ---
             - name: POSTGRES_HOST
               value: postgres.database.svc.cluster.local
             - name: POSTGRES_DB
               value: nextcloud
             - name: POSTGRES_USER
               valueFrom:
-                secretKeyRef: {name: nextcloud-db, key: username}
+                secretKeyRef:
+                  name: nextcloud-db
+                  key: username
             - name: POSTGRES_PASSWORD
               valueFrom:
-                secretKeyRef: {name: nextcloud-db, key: password}
-            # --- Redis: aktiviert automatisch Caching + File-Locking ---
+                secretKeyRef:
+                  name: nextcloud-db
+                  key: password
+            # --- Redis ---
             - name: REDIS_HOST
               value: redis.redis.svc.cluster.local
             - name: REDIS_HOST_PASSWORD
               valueFrom:
-                secretKeyRef: {name: redis-auth, key: password}
+                secretKeyRef:
+                  name: redis-auth
+                  key: password
           volumeMounts:
             - name: data
               mountPath: /var/www/html

@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nextcloud-cron
+  namespace: nextcloud
+spec:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: cron
+              image: nextcloud:31-apache       # gleiche Version wie das Deployment!
+              command: ["php", "-f", "/var/www/html/cron.php"]
+              securityContext:
+                runAsUser: 33                  # www-data
+              volumeMounts:
+                - name: data
+                  mountPath: /var/www/html
+          volumes:
+            - name: data
+              persistentVolumeClaim:
+                claimName: nextcloud-data
