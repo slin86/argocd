@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infisical
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
+    chart: infisical-standalone
+    targetRevision: "*"          # TODO: nach Erstinstallation auf konkrete Version pinnen
+    helm:
+      valuesObject:
+        infisical:
+          replicaCount: 1
+          # Bootstrap-Secret mit ENCRYPTION_KEY, AUTH_SECRET,
+          # DB_CONNECTION_URI, REDIS_URL, SITE_URL (manuell angelegt,
+          # siehe bootstrap_secrets.py):
+          kubeSecretRef: infisical-secrets
+          autoDatabaseSchemaMigration: true
+        # Mitgelieferte Backends abschalten - wir nutzen die geteilten Dienste:
+        postgresql:
+          enabled: false
+        redis:
+          enabled: false
+        ingress:
+          enabled: true
+          ingressClassName: traefik
+          hostName: secrets.home.lan
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: infisical
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
