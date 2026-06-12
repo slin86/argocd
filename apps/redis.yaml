@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nextcloud
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/slin86/argocd
+    targetRevision: main
+    path: redis
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: redis
+  syncPolicy:
+    automated:
+      prune: true        # gelöschte Manifeste → Ressourcen werden entfernt
+      selfHeal: true     # manuelle Cluster-Änderungen werden zurückgedreht
+    syncOptions:
+      - CreateNamespace=true

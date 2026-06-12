@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: postgres-backup
+  namespace: database
+spec:
+  schedule: "30 2 * * *"          # täglich 02:30
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: backup
+              image: postgres:17-alpine
+              command: ["/bin/sh", "-c"]
+              args:
+                - |
+                  pg_dumpall -h postgres.database.svc.cluster.local -U postgres \
+                    | gzip > /backup/pg-$(date +%F).sql.gz
+                  # Dumps älter als 14 Tage löschen
+                  find /backup -name 'pg-*.sql.gz' -mtime +14 -delete
+              env:
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres-superuser
+                      key: password
+              volumeMounts:
+                - name: backup
+                  mountPath: /backup
+          volumes:
+            - name: backup
+              nfs:
+                server: 192.168.178.200
+                path: /volume1/backup

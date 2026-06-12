@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "10g"   # große Uploads erlauben
+spec:
+  rules:
+    - host: nextcloud.home.lan
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nextcloud
+                port:
+                  number: 80
