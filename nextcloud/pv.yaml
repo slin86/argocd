@@ -16,4 +16,4 @@ spec:
     - retrans=3
   nfs:
     server: 192.168.178.200
-    path: /volume1/NextCloud
+    path: /volume1/nextcloud
