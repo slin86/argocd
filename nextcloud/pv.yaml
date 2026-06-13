@@ -10,7 +10,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-nas
   mountOptions:
-    - nfsvers=4.1
+    - nfsvers=3
     - hard
     - timeo=600
     - retrans=3
